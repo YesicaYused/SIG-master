@@ -1,0 +1,130 @@
+<nz-tabset>
+  <nz-tab nzTitle="Redes sociales">
+    <section nz-row nzType="flex">
+      <form nz-form class="ant-advanced-search-form">
+        <div nz-row [nzGutter]="24" *ngIf="SettingService.setting">
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-form-item nzFlex>
+              <nz-form-label>Facebook Cliente ID </nz-form-label>
+              <nz-input-group>
+                <input nz-input placeholder="Facebook ID" name="facebook" [(ngModel)]="SettingService.setting[12]['value']" />
+              </nz-input-group>
+            </nz-form-item>
+            <br>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="24">
+            <nz-form-item nzFlex>
+              <nz-form-label>Google Cliente ID </nz-form-label>
+              <nz-input-group>
+                <input nz-input placeholder="Google ID" name="google" [(ngModel)]="SettingService.setting[13]['value']" />
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col [nzSpan]="24" style="text-align: right;">
+            <button nz-button [nzType]="'default'" [nzLoading]="loading" (click)="modifySocialLogin()">Guardar</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </nz-tab>
+  <nz-tab nzTitle="Metodos de pago">
+    <section nz-row nzType="flex">
+      <form nz-form class="ant-advanced-search-form">
+        <div nz-row [nzGutter]="24" *ngIf="SettingService.setting">
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-form-item nzFlex>
+              <nz-form-label>Nombre </nz-form-label>
+              <nz-input-group>
+                <input nz-input placeholder="Nombre">
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-form-item nzFlex>
+              <nz-form-label>Cliente ID </nz-form-label>
+              <nz-input-group>
+                <input nz-input placeholder="ID">
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col [nzSpan]="24" style="text-align: right;">
+            <button nz-button [nzType]="'default'" [nzLoading]="loading">Guardar</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </nz-tab>
+  <nz-tab nzTitle="Correo">
+    <section nz-row nzType="flex">
+      <form nz-form class="ant-advanced-search-form">
+        <div nz-row [nzGutter]="24" *ngIf="SettingService.setting">
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-form-item nzFlex>
+              <nz-form-label>Correo </nz-form-label>
+              <nz-input-group>
+                <input nz-input placeholder="Correo" name="email" [(ngModel)]="SettingService.setting[31]['value']">
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-form-item nzFlex>
+              <nz-form-label>Contraseña </nz-form-label>
+              <nz-input-group [nzSuffix]="suffixTemplate">
+                <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Contraseña" name="password" [(ngModel)]="SettingService.setting[32]['value']">
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+        </div>
+        <br>
+        <div nz-row [nzGutter]="24">
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-form-item nzFlex>
+              <nz-form-label>Cifrado del Correo </nz-form-label>
+              <nz-input-group>
+                <input nz-input placeholder="ssl" name="encryption" [(ngModel)]="SettingService.setting[33]['value']">
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-form-item nzFlex>
+              <nz-form-label>Correo Anfitrión </nz-form-label>
+              <nz-input-group>
+                <input nz-input placeholder="ssl://smtp.gmail.com" name="host" [(ngModel)]="SettingService.setting[38]['value']">
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+        </div>
+        <br>
+        <div nz-row [nzGutter]="24">
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-form-item nzFlex>
+              <nz-form-label>Puerto del Correo </nz-form-label>
+              <nz-input-group>
+                <input nz-input placeholder="Puerto de correo" name="port" [(ngModel)]="SettingService.setting[39]['value']">
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-form-item nzFlex>
+              <nz-form-label>Controlador del Correo </nz-form-label>
+              <nz-input-group>
+                <input nz-input placeholder="smtp" name="controller" [(ngModel)]="SettingService.setting[41]['value']">
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col [nzSpan]="24" style="text-align: right;">
+            <button nz-button [nzType]="'default'" [nzLoading]="loading" (click)="modifyEmail()">Guardar</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </nz-tab>
+</nz-tabset>
+
+<ng-template #suffixTemplate><i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i></ng-template>

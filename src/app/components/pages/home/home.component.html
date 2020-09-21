@@ -1,0 +1,12 @@
+<div *ngIf="SettingService.settingStatus" class="home">
+  <div class="content">
+    <div (click)="pos(i)" *ngFor="let item of observatorioService.observatories; let i = index" class="observatory" routerLink="/dashboard">
+      <div class="image" [ngStyle]="{'background-image': 'url('+this.url+item.image+')'}"></div>
+      <div class="description">
+<!--        <h5 routerLink="/dashboard">{{ item.name }}</h5>-->
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+

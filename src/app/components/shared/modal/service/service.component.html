@@ -1,0 +1,31 @@
+<form nz-form #Module="ngForm" class="form">
+  <div class="total">
+    <div class="image">
+      <nz-upload
+        class="avatar-uploader"
+        nzAction="https://jsonplaceholder.typicode.com/posts/"
+        nzName="avatar"
+        nzListType="picture-card"
+        required
+        [nzShowUploadList]="false"
+        [nzBeforeUpload]="beforeUpload"
+        (nzChange)="handleChange($event)">
+        <ng-container *ngIf="!service.image">
+          <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+          <div class="ant-upload-text">Upload</div>
+        </ng-container>
+        <img *ngIf="service.image" [src]="url + service.image" class="avatar" />
+      </nz-upload>
+    </div>
+    <div class="description">
+      <input nz-input placeholder="Titulo" [(ngModel)]="service.title" #title="ngModel" name="title" required/>
+      <textarea rows="3" cols="100" nz-input [(ngModel)]="service.description" placeholder="Descripción" #description="ngModel" name="description" required></textarea>
+    </div>
+    <br>
+  </div>
+  <nz-form-item nz-row nzType="flex" nzJustify="end" nzAlign="middle">
+    <button nz-button nzType="default" (click)="handleCancel()">Cancelar</button>
+    <button nz-button nzType="default" [nzLoading]="isConfirmLoading" (click)="add()" [disabled]="!Module.form.valid">Enviar</button>
+  </nz-form-item>
+</form>
+

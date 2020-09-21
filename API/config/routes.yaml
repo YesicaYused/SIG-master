@@ -1,0 +1,733 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+home:
+  path: /
+  controller: App\Controller\HomeController::index
+  methods: [GET]
+
+case:
+  path: /case
+  controller: App\Controller\CaseController::index
+  methods: [GET]
+create_case:
+  path: /add/case
+  controller: App\Controller\CaseController::create
+  methods: [POST]
+update_case:
+  path: /update/case
+  controller: App\Controller\CaseController::update
+  methods: [PUT]
+restore_case:
+  path: /restore/case
+  controller: App\Controller\CaseController::restore
+  methods: [PUT]
+delete_case:
+  path: /delete/case
+  controller: App\Controller\CaseController::delete
+  methods: [PUT]
+query_case:
+  path: /query/case
+  controller: App\Controller\CaseController::query
+  methods: [POST]
+case_all:
+  path: /case/all
+  controller: App\Controller\CaseController::all
+  methods: [GET]
+
+person_profile:
+  path: /person_profile
+  controller: App\Controller\PersonProfileController::index
+  methods: [GET]
+create_person_profile:
+  path: /add/person_profile
+  controller: App\Controller\PersonProfileController::create
+  methods: [POST]
+update_person_profile:
+  path: /update/person_profile
+  controller: App\Controller\PersonProfileController::update
+  methods: [PUT]
+restore_person_profile:
+  path: /restore/person_profile
+  controller: App\Controller\PersonProfileController::restore
+  methods: [PUT]
+delete_person_profile:
+  path: /delete/person_profile
+  controller: App\Controller\PersonProfileController::delete
+  methods: [PUT]
+query_person_profile:
+  path: /query/person_profile
+  controller: App\Controller\PersonProfileController::query
+  methods: [POST]
+person_profile_all:
+  path: /person_profile/all
+  controller: App\Controller\PersonProfileController::all
+  methods: [GET]
+
+module_profile:
+  path: /module_profile
+  controller: App\Controller\ModuleProfileController::index
+  methods: [GET]
+create_module_profile:
+  path: /add/module_profile
+  controller: App\Controller\ModuleProfileController::create
+  methods: [POST]
+get_module_profile:
+  path: /get/module_profile
+  controller: App\Controller\ModuleProfileController::getModuleProfile
+  methods: [POST]
+update_module_profile:
+  path: /update/module_profile
+  controller: App\Controller\ModuleProfileController::update
+  methods: [PUT]
+restore_module_profile:
+  path: /restore/module_profile
+  controller: App\Controller\ModuleProfileController::restore
+  methods: [PUT]
+delete_module_profile:
+  path: /delete/module_profile
+  controller: App\Controller\ModuleProfileController::delete
+  methods: [PUT]
+query_module_profile:
+  path: /query/module_profile
+  controller: App\Controller\ModuleProfileController::query
+  methods: [POST]
+module_profile_all:
+  path: /module_profile/all
+  controller: App\Controller\ModuleProfileController::all
+  methods: [GET]
+
+permission_profile:
+  path: /permission_profile
+  controller: App\Controller\PermissionProfileController::index
+  methods: [GET]
+create_permission_profile:
+  path: /add/permission_profile
+  controller: App\Controller\PermissionProfileController::create
+  methods: [POST]
+update_permission_profile:
+  path: /update/permission_profile
+  controller: App\Controller\PermissionProfileController::update
+  methods: [PUT]
+restore_permission_profile:
+  path: /restore/permission_profile
+  controller: App\Controller\PermissionProfileController::restore
+  methods: [PUT]
+delete_permission_profile:
+  path: /delete/permission_profile
+  controller: App\Controller\PermissionProfileController::delete
+  methods: [PUT]
+query_permission_profile:
+  path: /query/permission_profile
+  controller: App\Controller\PermissionProfileController::query
+  methods: [POST]
+permission_profile_all:
+  path: /permission_profile/all
+  controller: App\Controller\PermissionProfileController::all
+  methods: [GET]
+
+cause:
+  path: /cause
+  controller: App\Controller\CauseController::index
+  methods: [GET]
+create_cause:
+  path: /add/cause
+  controller: App\Controller\CauseController::create
+  methods: [POST]
+update_cause:
+  path: /update/cause
+  controller: App\Controller\CauseController::update
+  methods: [PUT]
+restore_cause:
+  path: /restore/cause
+  controller: App\Controller\CauseController::restore
+  methods: [PUT]
+delete_cause:
+  path: /delete/cause
+  controller: App\Controller\CauseController::delete
+  methods: [PUT]
+query_cause:
+  path: /query/cause
+  controller: App\Controller\CauseController::query
+  methods: [POST]
+cause_all:
+  path: /cause/all
+  controller: App\Controller\CauseController::all
+  methods: [GET]
+
+department:
+  path: /department
+  controller: App\Controller\DepartmentController::index
+  methods: [GET]
+create_department:
+  path: /add/department
+  controller: App\Controller\DepartmentController::create
+  methods: [POST]
+update_department:
+  path: /update/department
+  controller: App\Controller\DepartmentController::update
+  methods: [PUT]
+restore_department:
+  path: /restore/department
+  controller: App\Controller\DepartmentController::restore
+  methods: [PUT]
+delete_department:
+  path: /delete/department
+  controller: App\Controller\DepartmentController::delete
+  methods: [PUT]
+query_department:
+  path: /query/department
+  controller: App\Controller\DepartmentController::query
+  methods: [POST]
+department_all:
+  path: /department/all
+  controller: App\Controller\DepartmentController::all
+  methods: [GET]
+
+icon:
+  path: /icon
+  controller: App\Controller\IconController::index
+  methods: [GET]
+create_icon:
+  path: /add/icon
+  controller: App\Controller\IconController::create
+  methods: [POST]
+update_icon:
+  path: /update/icon
+  controller: App\Controller\IconController::update
+  methods: [PUT]
+restore_icon:
+  path: /restore/icon
+  controller: App\Controller\IconController::restore
+  methods: [PUT]
+delete_icon:
+  path: /delete/icon
+  controller: App\Controller\IconController::delete
+  methods: [PUT]
+query_icon:
+  path: /query/icon
+  controller: App\Controller\IconController::query
+  methods: [POST]
+icon_all:
+  path: /icon/all
+  controller: App\Controller\IconController::all
+  methods: [GET]
+
+modality:
+  path: /modality
+  controller: App\Controller\ModalityController::index
+  methods: [GET]
+create_modality:
+  path: /add/modality
+  controller: App\Controller\ModalityController::create
+  methods: [POST]
+update_modality:
+  path: /update/modality
+  controller: App\Controller\ModalityController::update
+  methods: [PUT]
+restore_modality:
+  path: /restore/modality
+  controller: App\Controller\ModalityController::restore
+  methods: [PUT]
+delete_modality:
+  path: /delete/modality
+  controller: App\Controller\ModalityController::delete
+  methods: [PUT]
+query_modality:
+  path: /query/modality
+  controller: App\Controller\ModalityController::query
+  methods: [POST]
+modality_all:
+  path: /modality/all
+  controller: App\Controller\ModalityController::all
+  methods: [GET]
+
+module:
+  path: /module
+  controller: App\Controller\ModuleController::index
+  methods: [GET]
+create_module:
+  path: /add/module
+  controller: App\Controller\ModuleController::create
+  methods: [POST]
+update_module:
+  path: /update/module
+  controller: App\Controller\ModuleController::update
+  methods: [PUT]
+restore_module:
+  path: /restore/module
+  controller: App\Controller\ModuleController::restore
+  methods: [PUT]
+delete_module:
+  path: /delete/module
+  controller: App\Controller\ModuleController::delete
+  methods: [PUT]
+query_module:
+  path: /query/module
+  controller: App\Controller\ModuleController::query
+  methods: [POST]
+module_all:
+  path: /module/all
+  controller: App\Controller\ModuleController::all
+  methods: [GET]
+
+municipality:
+  path: /municipality
+  controller: App\Controller\MunicipalityController::index
+  methods: [GET]
+create_municipality:
+  path: /add/municipality
+  controller: App\Controller\MunicipalityController::create
+  methods: [POST]
+update_municipality:
+  path: /update/municipality
+  controller: App\Controller\MunicipalityController::update
+  methods: [PUT]
+restore_municipality:
+  path: /restore/municipality
+  controller: App\Controller\MunicipalityController::restore
+  methods: [PUT]
+delete_municipality:
+  path: /delete/municipality
+  controller: App\Controller\MunicipalityController::delete
+  methods: [PUT]
+query_municipality:
+  path: /query/municipality
+  controller: App\Controller\MunicipalityController::query
+  methods: [POST]
+municipality_all:
+  path: /municipality/all
+  controller: App\Controller\MunicipalityController::all
+  methods: [GET]
+
+nationality:
+  path: /nationality
+  controller: App\Controller\NationalityController::index
+  methods: [GET]
+create_nationality:
+  path: /add/nationality
+  controller: App\Controller\NationalityController::create
+  methods: [POST]
+update_nationality:
+  path: /update/nationality
+  controller: App\Controller\NationalityController::update
+  methods: [PUT]
+restore_nationality:
+  path: /restore/nationality
+  controller: App\Controller\NationalityController::restore
+  methods: [PUT]
+delete_nationality:
+  path: /delete/nationality
+  controller: App\Controller\NationalityController::delete
+  methods: [PUT]
+query_nationality:
+  path: /query/nationality
+  controller: App\Controller\NationalityController::query
+  methods: [POST]
+nationality_all:
+  path: /nationality/all
+  controller: App\Controller\NationalityController::all
+  methods: [GET]
+
+neighborhood:
+  path: /neighborhood
+  controller: App\Controller\NeighborhoodController::index
+  methods: [GET]
+create_neighborhood:
+  path: /add/neighborhood
+  controller: App\Controller\NeighborhoodController::create
+  methods: [POST]
+update_neighborhood:
+  path: /update/neighborhood
+  controller: App\Controller\NeighborhoodController::update
+  methods: [PUT]
+restore_neighborhood:
+  path: /restore/neighborhood
+  controller: App\Controller\NeighborhoodController::restore
+  methods: [PUT]
+delete_neighborhood:
+  path: /delete/neighborhood
+  controller: App\Controller\NeighborhoodController::delete
+  methods: [PUT]
+query_neighborhood:
+  path: /query/neighborhood
+  controller: App\Controller\NeighborhoodController::query
+  methods: [POST]
+neighborhood_all:
+  path: /neighborhood/all
+  controller: App\Controller\NeighborhoodController::all
+  methods: [GET]
+
+observatory:
+  path: /observatory
+  controller: App\Controller\ObservatoryController::index
+  methods: [GET]
+create_observatory:
+  path: /add/observatory
+  controller: App\Controller\ObservatoryController::create
+  methods: [POST]
+update_observatory:
+  path: /update/observatory
+  controller: App\Controller\ObservatoryController::update
+  methods: [PUT]
+restore_observatory:
+  path: /restore/observatory
+  controller: App\Controller\ObservatoryController::restore
+  methods: [PUT]
+delete_observatory:
+  path: /delete/observatory
+  controller: App\Controller\ObservatoryController::delete
+  methods: [PUT]
+query_observatory:
+  path: /query/observatory
+  controller: App\Controller\ObservatoryController::query
+  methods: [POST]
+observatory_all:
+  path: /observatory/all
+  controller: App\Controller\ObservatoryController::all
+  methods: [GET]
+
+permission:
+  path: /permission
+  controller: App\Controller\PermissionController::index
+  methods: [GET]
+create_permission:
+  path: /add/permission
+  controller: App\Controller\PermissionController::create
+  methods: [POST]
+update_permission:
+  path: /update/permission
+  controller: App\Controller\PermissionController::update
+  methods: [PUT]
+restore_permission:
+  path: /restore/permission
+  controller: App\Controller\PermissionController::restore
+  methods: [PUT]
+delete_permission:
+  path: /delete/permission
+  controller: App\Controller\PermissionController::delete
+  methods: [PUT]
+query_permission:
+  path: /query/permission
+  controller: App\Controller\PermissionController::query
+  methods: [POST]
+permission_all:
+  path: /permission/all
+  controller: App\Controller\PermissionController::all
+  methods: [GET]
+
+person:
+  path: /person
+  controller: App\Controller\PersonController::index
+  methods: [GET]
+create_person:
+  path: /add/person
+  controller: App\Controller\PersonController::create
+  methods: [POST]
+update_person:
+  path: /update/person
+  controller: App\Controller\PersonController::update
+  methods: [PUT]
+updatePersonalInformation:
+  path: /updatePersonalInformation
+  controller: App\Controller\PersonController::updatePersonalInformation
+  methods: [PUT]
+login:
+  path: /login
+  controller: App\Controller\PersonController::login
+  methods: [POST]
+personal_information:
+  path: /personalInformation
+  controller: App\Controller\PersonController::Personalinformation
+  methods: [POST]
+restore_person:
+  path: /restore/person
+  controller: App\Controller\PersonController::restore
+  methods: [PUT]
+delete_person:
+  path: /delete/person
+  controller: App\Controller\PersonController::delete
+  methods: [PUT]
+query_person:
+  path: /query/person
+  controller: App\Controller\PersonController::query
+  methods: [POST]
+profile_query:
+  path: /queryProfile/person
+  controller: App\Controller\PersonController::queryProfile
+  methods: [POST]
+person_all:
+  path: /person/all
+  controller: App\Controller\PersonController::all
+  methods: [GET]
+
+profession:
+  path: /profession
+  controller: App\Controller\ProfessionController::index
+  methods: [GET]
+create_profession:
+  path: /add/profession
+  controller: App\Controller\ProfessionController::create
+  methods: [POST]
+update_profession:
+  path: /update/profession
+  controller: App\Controller\ProfessionController::update
+  methods: [PUT]
+restore_profession:
+  path: /restore/profession
+  controller: App\Controller\ProfessionController::restore
+  methods: [PUT]
+delete_profession:
+  path: /delete/profession
+  controller: App\Controller\ProfessionController::delete
+  methods: [PUT]
+query_profession:
+  path: /query/profession
+  controller: App\Controller\ProfessionController::query
+  methods: [POST]
+profession_all:
+  path: /profession/all
+  controller: App\Controller\ProfessionController::all
+  methods: [GET]
+
+profile:
+  path: /profile
+  controller: App\Controller\ProfileController::index
+  methods: [GET]
+create_profile:
+  path: /add/profile
+  controller: App\Controller\ProfileController::create
+  methods: [POST]
+getPermisionProfile:
+  path: /getPermisionProfile
+  controller: App\Controller\ProfileController::getPermisionProfile
+  methods: [POST]
+getModuleProfile:
+  path: /getModuleProfile
+  controller: App\Controller\ProfileController::getModuleProfile
+  methods: [POST]
+update_profile:
+  path: /update/profile
+  controller: App\Controller\ProfileController::update
+  methods: [PUT]
+restore_profile:
+  path: /restore/profile
+  controller: App\Controller\ProfileController::restore
+  methods: [PUT]
+delete_profile:
+  path: /delete/profile
+  controller: App\Controller\ProfileController::delete
+  methods: [PUT]
+query_profile:
+  path: /query/profile
+  controller: App\Controller\ProfileController::query
+  methods: [POST]
+module_query:
+  path: /queryProfile/module
+  controller: App\Controller\ModuleController::queryProfile
+  methods: [POST]
+profile_all:
+  path: /profile/all
+  controller: App\Controller\ProfileController::all
+  methods: [GET]
+
+scholarship:
+  path: /scholarship
+  controller: App\Controller\ScholarshipController::index
+  methods: [GET]
+create_scholarship:
+  path: /add/scholarship
+  controller: App\Controller\ScholarshipController::create
+  methods: [POST]
+update_scholarship:
+  path: /update/scholarship
+  controller: App\Controller\ScholarshipController::update
+  methods: [PUT]
+restore_scholarship:
+  path: /restore/scholarship
+  controller: App\Controller\ScholarshipController::restore
+  methods: [PUT]
+delete_scholarship:
+  path: /delete/scholarship
+  controller: App\Controller\ScholarshipController::delete
+  methods: [PUT]
+query_scholarship:
+  path: /query/scholarship
+  controller: App\Controller\ScholarshipController::query
+  methods: [POST]
+scholarship_all:
+  path: /scholarship/all
+  controller: App\Controller\ScholarshipController::all
+  methods: [GET]
+
+setting:
+  path: /setting
+  controller: App\Controller\SettingController::index
+  methods: [GET]
+create_setting:
+  path: /add/setting
+  controller: App\Controller\SettingController::create
+  methods: [POST]
+update_setting:
+  path: /update/setting
+  controller: App\Controller\SettingController::update
+  methods: [PUT]
+query_setting:
+  path: /query/setting
+  controller: App\Controller\SettingController::query
+  methods: [POST]
+setting_all:
+  path: /setting/all
+  controller: App\Controller\SettingController::all
+  methods: [GET]
+
+site_class:
+  path: /site_class
+  controller: App\Controller\SiteClassController::index
+  methods: [GET]
+create_site_class:
+  path: /add/site_class
+  controller: App\Controller\SiteClassController::create
+  methods: [POST]
+update_site_class:
+  path: /update/site_class
+  controller: App\Controller\SiteClassController::update
+  methods: [PUT]
+restore_site_class:
+  path: /restore/site_class
+  controller: App\Controller\SiteClassController::restore
+  methods: [PUT]
+delete_site_class:
+  path: /delete/site_class
+  controller: App\Controller\SiteClassController::delete
+  methods: [PUT]
+query_site_class:
+  path: /query/site_class
+  controller: App\Controller\SiteClassController::query
+  methods: [POST]
+site_class_all:
+  path: /site_class/all
+  controller: App\Controller\SiteClassController::all
+  methods: [GET]
+
+variable:
+  path: /variable
+  controller: App\Controller\VariableController::index
+  methods: [GET]
+create_variable:
+  path: /add/variable
+  controller: App\Controller\VariableController::create
+  methods: [POST]
+update_variable:
+  path: /update/variable
+  controller: App\Controller\VariableController::update
+  methods: [PUT]
+restore_variable:
+  path: /restore/variable
+  controller: App\Controller\VariableController::restore
+  methods: [PUT]
+delete_variable:
+  path: /delete/variable
+  controller: App\Controller\VariableController::delete
+  methods: [PUT]
+query_variable:
+  path: /query/variable
+  controller: App\Controller\VariableController::query
+  methods: [POST]
+variable_all:
+  path: /variable/all
+  controller: App\Controller\VariableController::all
+  methods: [GET]
+
+vehicle:
+  path: /vehicle
+  controller: App\Controller\VehicleController::index
+  methods: [GET]
+create_vehicle:
+  path: /add/vehicle
+  controller: App\Controller\VehicleController::create
+  methods: [POST]
+update_vehicle:
+  path: /update/vehicle
+  controller: App\Controller\VehicleController::update
+  methods: [PUT]
+restore_vehicle:
+  path: /restore/vehicle
+  controller: App\Controller\VehicleController::restore
+  methods: [PUT]
+delete_vehicle:
+  path: /delete/vehicle
+  controller: App\Controller\VehicleController::delete
+  methods: [PUT]
+query_vehicle:
+  path: /query/vehicle
+  controller: App\Controller\VehicleController::query
+  methods: [POST]
+vehicle_all:
+  path: /vehicle/all
+  controller: App\Controller\VehicleController::all
+  methods: [GET]
+
+weapontype:
+  path: /weapon_type
+  controller: App\Controller\WeaponTypeController::index
+  methods: [GET]
+create_weapontype:
+  path: /add/weapon_type
+  controller: App\Controller\WeaponTypeController::create
+  methods: [POST]
+update_weapontype:
+  path: /update/weapon_type
+  controller: App\Controller\WeaponTypeController::update
+  methods: [PUT]
+restore_weapontype:
+  path: /restore/weapon_type
+  controller: App\Controller\WeaponTypeController::restore
+  methods: [PUT]
+delete_weapontype:
+  path: /delete/weapon_type
+  controller: App\Controller\WeaponTypeController::delete
+  methods: [PUT]
+query_weapontype:
+  path: /query/weapon_type
+  controller: App\Controller\WeaponTypeController::query
+  methods: [POST]
+weapontype_all:
+  path: /weapon_type/all
+  controller: App\Controller\WeaponTypeController::all
+  methods: [GET]
+
+zone:
+  path: /zone
+  controller: App\Controller\ZoneController::index
+  methods: [GET]
+create_zone:
+  path: /add/zone
+  controller: App\Controller\ZoneController::create
+  methods: [POST]
+update_zone:
+  path: /update/zone
+  controller: App\Controller\ZoneController::update
+  methods: [PUT]
+restore_zone:
+  path: /restore/zone
+  controller: App\Controller\ZoneController::restore
+  methods: [PUT]
+delete_zone:
+  path: /delete/zone
+  controller: App\Controller\ZoneController::delete
+  methods: [PUT]
+query_zone:
+  path: /query/zone
+  controller: App\Controller\ZoneController::query
+  methods: [POST]
+zone_all:
+  path: /zone/all
+  controller: App\Controller\ZoneController::all
+  methods: [GET]
+
+theft_analysi:
+  path: /theft_analysi
+  controller: App\Controller\CaseController::theftAnalysi
+  methods: [POST]

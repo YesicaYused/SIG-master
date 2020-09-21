@@ -1,0 +1,24 @@
+<form nz-form #Category="ngForm" class="form" *ngIf="this.moduleService.moduleState">
+  <nz-form-item nz-row nzType="flex" nzJustify="center" nzAlign="middle">
+    <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12" nzXl="12">
+      <nz-input-group>
+        <input type="text" nz-input [(ngModel)]="moduleService.modules.name" #name="ngModel" name="name" placeholder="Nombre" required/>
+      </nz-input-group>
+      <nz-form-explain *ngIf="(name.invalid && name.touched) && name.errors.required">El nombre es requerido</nz-form-explain>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12" nzXl="12">
+      <nz-input-group>
+        <input type="text" nz-input [(ngModel)]="moduleService.modules.route" #route="ngModel" name="route" placeholder="Ruta" required/>
+      </nz-input-group>
+      <nz-form-explain *ngIf="(route.invalid && route.touched) && route.errors.required">La ruta es requerida</nz-form-explain>
+    </div>
+  </nz-form-item>
+  <nz-form-item nz-row nzType="flex" nzJustify="end" nzAlign="middle">
+    <button nz-button nzType="default" (click)="handleCancel()">Cancelar</button>
+    <button *ngIf="this.moduleService.modules == ''" nz-button nzType="default" [nzLoading]="isConfirmLoading" (click)="add()" [disabled]="!Category.form.valid">Enviar</button>
+    <button *ngIf="this.moduleService.modules != ''" nz-button nzType="default" [nzLoading]="isConfirmLoading" (click)="change()" [disabled]="!Category.form.valid">Enviar</button>
+  </nz-form-item>
+</form>
+<div *ngIf="!this.moduleService.moduleState">
+  Cargando datos
+</div>

@@ -1,0 +1,178 @@
+<div class="analitycs">
+  <div class="content">
+    <div class="header">
+      <div class="data">
+        <div class="logo" *ngIf="observatorioService.observatories">
+          <div class="image" [ngStyle]="{'background-image': 'url('+this.url+observatorioService.observatories[variableService.positionObservatory].image+')'}"></div>
+          <div class="description">
+            <p>{{ observatorioService.observatories[variableService.positionObservatory].description }}</p>
+          </div>
+        </div>
+        <div class="variables" *ngIf="variableService.variables">
+          <div class="variable">
+            <h3>{{ variableService.variables[value - 1]['name'] }}</h3>
+            <p *ngIf="variableService.year">{{ variableService.year }} <span>/ año actual</span></p>
+            <p *ngIf="!variableService.year">0 <span>/ año actual</span></p>
+          </div>
+          <div class="variable">
+            <h3>{{ variableService.variables[value - 1]['name'] }}</h3>
+            <p *ngIf="variableService.month">{{ variableService.month }} <span>/ mes actual</span></p>
+            <p *ngIf="!variableService.month">0 <span>/ mes actual</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="graph" *ngIf="variableService.variables && monthsChartDataNeighborhoods">
+        <div class="content">
+          <h3>{{variableService.variables[value - 1]['name']}} por meses</h3>
+          <canvas baseChart width="500px" height="320px"
+                  [datasets]="monthsChartDataNeighborhoods"
+                  [labels]="variableService.months['label']"
+                  [options]="LineChartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  [plugins]="lineChartPlugins">
+          </canvas>
+        </div>
+      </div>
+    </div>
+    <div class="mapbox">
+      <h3>Georreferenciación</h3>
+      <div id="mapbox" class="map"></div>
+    </div>
+    <div class="graphics">
+      <div class="group">
+        <div>
+          <div class="graph" *ngIf="variableService.variables && caseService.spatial_behavior" style="width: 550px">
+            <div class="content">
+              <h3>Comportamiento espacial en {{variableService.variables[value - 1]['name']}} </h3>
+              <canvas baseChart
+                      [data]="caseService.spatial_behavior['number']"
+                      [labels]="caseService.spatial_behavior['label']"
+                      [chartType]="pieChartType"
+                      [options]="pieChartOptions"
+                      [plugins]="pieChartPlugins"
+                      [colors]="spatialChartColors"
+                      [legend]="pieChartLegend">
+              </canvas>
+            </div>
+            <div class="data">
+              <div>
+                <h3>Nombre</h3>
+                <span *ngFor="let label of caseService.spatial_behavior['label']">{{label}}</span>
+              </div>
+              <div>
+                <h3>Cantidad</h3>
+                <span *ngFor="let number of caseService.spatial_behavior['number']">{{number}}</span>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="graph" *ngIf="variableService.variables && barChartDataTemporary" style="width: 550px">
+            <div class="content">
+              <h3>Comportamiento temporal</h3>
+              <canvas baseChart
+                      [datasets]="barChartDataTemporary"
+                      [options]="radarChartOptions"
+                      [colors]="temporaryChartColors"
+                      [labels]="caseService.temporary_behavior['label']"
+                      [chartType]="radarChartType">
+              </canvas>
+            </div>
+            <div class="data">
+              <div>
+                <h3>Nombre</h3>
+                <span *ngFor="let label of caseService.temporary_behavior['label']">{{label}}</span>
+              </div>
+              <div>
+                <h3>Cantidad</h3>
+                <span *ngFor="let number of caseService.temporary_behavior['number']">{{number}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="graph" *ngIf="variableService.variables && lineChartDataNeighborhoods" style="width: 550px;">
+          <div class="content">
+            <h3>{{variableService.variables[value - 1]['name']}} por barrio</h3>
+            <canvas baseChart height="480px;" width="500px"
+                    [datasets]="lineChartDataNeighborhoods"
+                    [labels]="caseService.neighborhoods['label']"
+                    [options]="LineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    [plugins]="lineChartPlugins">
+            </canvas>
+          </div>
+        </div>
+      </div>
+
+<!--  Repetida-->
+      <div class="graph" *ngIf="variableService.variables && barChartDataTemporary" style="width: 550px">
+        <div class="content">
+          <h3>Comportamiento temporal</h3>
+          <canvas baseChart
+                  [datasets]="barChartDataTemporary"
+                  [options]="radarChartOptions"
+                  [colors]="temporaryChartColors"
+                  [labels]="caseService.temporary_behavior['label']"
+                  [chartType]="radarChartType">
+          </canvas>
+        </div>
+        <div class="data">
+          <div>
+            <h3>Nombre</h3>
+            <span *ngFor="let label of caseService.temporary_behavior['label']">{{label}}</span>
+          </div>
+          <div>
+            <h3>Cantidad</h3>
+            <span *ngFor="let number of caseService.temporary_behavior['number']">{{number}}</span>
+          </div>
+        </div>
+      </div>
+<!--  Repetida-->
+
+
+      <div class="graph" *ngIf="variableService.variables && caseService.civil_status" style="width: 550px">
+        <div class="content">
+          <h3>{{variableService.variables[value - 1]['name']}} por estado civil</h3>
+          <canvas baseChart
+                  [data]="caseService.civil_status['number']"
+                  [labels]="caseService.civil_status['label']"
+                  [chartType]="pieChartType"
+                  [colors]="civil_statusChartColors"
+                  [plugins]="pieChartPlugins"
+                  [legend]="pieChartLegend">
+          </canvas>
+        </div>
+        <div class="data">
+          <div>
+            <h3>Nombre</h3>
+            <span *ngFor="let label of caseService.civil_status['label']">{{label}}</span>
+          </div>
+          <div>
+            <h3>Cantidad</h3>
+            <span *ngFor="let number of caseService.civil_status['number']">{{number}}</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="graph" *ngIf="variableService.variables && barChartDataMunicipality" style="width:550px">
+        <div class="content">
+          <h3>{{variableService.variables[value - 1]['name']}} por municipio</h3>
+          <canvas baseChart
+                  [datasets]="barChartDataMunicipality"
+                  [labels]="caseService.municipality['label']"
+                  [options]="barChartOptions"
+                  [plugins]="barChartPlugins"
+                  [colors]="lineChartColorsT"
+                  [legend]="barChartLegend"
+                  [chartType]="barChartType">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

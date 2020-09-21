@@ -1,0 +1,37 @@
+<form nz-form #Category="ngForm" class="form" *ngIf="this.iconService.iconState">
+  <nz-form-item nz-row nzType="flex" nzJustify="center" nzAlign="middle">
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12" style="margin-bottom: 20px;">
+      <nz-input-group>
+        <input type="text" nz-input [(ngModel)]="iconService.icons.name" #name="ngModel" name="name" placeholder="Nombre" required/>
+      </nz-input-group>
+      <nz-form-explain *ngIf="(name.invalid && name.touched) && name.errors.required">El nombre es requerido</nz-form-explain>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12" style="margin-bottom: 20px;">
+      <nz-input-group>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Seleccione el tema" [(ngModel)]="iconTheme">
+          <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+          <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+        </nz-select>
+      </nz-input-group>
+      <nz-form-explain *ngIf="(name.invalid && name.touched) && name.errors.required">El nombre es requerido</nz-form-explain>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+      <nz-input-group>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Seleccione el tipo" [(ngModel)]="iconType">
+          <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+          <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+        </nz-select>
+      </nz-input-group>
+      <nz-form-explain *ngIf="(name.invalid && name.touched) && name.errors.required">El nombre es requerido</nz-form-explain>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12"></div>
+  </nz-form-item>
+  <nz-form-item nz-row nzType="flex" nzJustify="end" nzAlign="middle">
+    <button nz-button nzType="default" (click)="handleCancel()">Cancelar</button>
+    <button *ngIf="this.iconService.icons == ''" nz-button nzType="default" [nzLoading]="isConfirmLoading" (click)="add()" [disabled]="!Category.form.valid">Enviar</button>
+    <button *ngIf="this.iconService.icons != ''" nz-button nzType="default" [nzLoading]="isConfirmLoading" (click)="change()" [disabled]="!Category.form.valid">Enviar</button>
+  </nz-form-item>
+</form>
+<div *ngIf="!this.iconService.iconState">
+  Cargando datos
+</div>

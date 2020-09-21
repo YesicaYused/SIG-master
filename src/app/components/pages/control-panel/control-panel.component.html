@@ -1,0 +1,14 @@
+<nz-layout *ngIf="authService.stateProfile">
+  <app-header></app-header>
+  <nz-content class="outer-content">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item><b>Observatorio:</b> {{ authService.people['observatory'] }}</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <app-aside></app-aside>
+  </nz-content>
+  <app-footer></app-footer>
+</nz-layout>
+<section *ngIf="!authService.stateProfile">
+
+</section>
+

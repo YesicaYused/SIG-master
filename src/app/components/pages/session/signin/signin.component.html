@@ -1,0 +1,50 @@
+<section class="signin" nz-row nzType="flex" nzJustify="center" nzAlign="middle" *ngIf="SettingService.setting">
+  <div class="content_total" nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="10" nzXl="10">
+    <div class="sider" nz-col nzXs="12">
+      <form nz-form class="login-form" #Person="ngForm">
+        <div class="logo" [routerLink]="[ '/']" [ngStyle]="{'background-image': 'url('+this.url+SettingService.setting['1'].value+')'}"></div>
+        <nz-form-item>
+          <div nz-col nzXs="24">
+            <nz-input-group>
+              <div class="inputs">
+                <span>Código</span>
+                <input type="text" nz-input [(ngModel)]="person.code" placeholder="Código" #code="ngModel" name="code" required />
+              </div>
+            </nz-input-group>
+            <nz-form-explain>
+              <span *ngIf="(code.invalid && code.touched) && code.errors.required" class="error">
+                El código es requerido
+              </span>
+            </nz-form-explain>
+          </div>
+        </nz-form-item>
+        <nz-form-item>
+          <div nz-col nzXs="24">
+            <nz-input-group>
+              <div class="inputs">
+                <span>Contraseña</span>
+                <input
+                  nz-input
+                  type="password"
+                  #password="ngModel"
+                  name="password"
+                  required
+                  placeholder="Contraseña"
+                  [(ngModel)]="person.password"/>
+              </div>
+            </nz-input-group>
+            <nz-form-explain>
+              <span *ngIf="(password.invalid && password.touched) && password.errors.required" class="error">La contraseña es requerida</span>
+            </nz-form-explain>
+          </div>
+        </nz-form-item>
+        <nz-form-item>
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <button nz-button class="login-form-button" [nzType]="'primary'" (click)="Login()" [disabled]="!Person.form.valid" [nzLoading]="isLoading"><span>Ingresar</span></button>
+          </div>
+        </nz-form-item>
+      </form>
+    </div>
+    <div nz-col nzXs="12" class="content_text" [ngStyle]="{'background-image': 'url(https://i.pinimg.com/originals/a8/f5/12/a8f512a9293ae93c9eb29ae67762c634.jpg)'}"></div>
+  </div>
+</section>

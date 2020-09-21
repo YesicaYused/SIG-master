@@ -1,0 +1,95 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face
+  font-family: 'Rubik-Regular'
+  font-style: normal
+  font-weight: normal
+  src: url('/assets/fonts/Rubik-Regular.ttf')
+
+@font-face
+  font-family: 'Rubik-Light'
+  font-style: normal
+  font-weight: normal
+  src: url('/assets/fonts/Rubik-Light.ttf')
+
+@font-face
+  font-family: 'Rubik-Bold'
+  font-style: normal
+  font-weight: normal
+  src: url('/assets/fonts/Rubik-Bold.ttf')
+
+@font-face
+  font-family: 'Rubik-Medium'
+  font-style: normal
+  font-weight: normal
+  src: url('/assets/fonts/Rubik-Medium.ttf')
+
+
+
+body::-webkit-scrollbar, .ant-modal-wrap::-webkit-scrollbar
+  width: 4px
+body::-webkit-scrollbar-thumb, .ant-modal-wrap::-webkit-scrollbar-thumb
+  border-radius: 5px
+  background: #125688
+body::-webkit-scrollbar-track, .ant-modal-wrap::-webkit-scrollbar-track
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+  background-color: #F5F5F5
+.ant-layout-header
+  background: white !important
+.ant-layout
+  min-height: 100% !important
+.ant-result
+  padding: 0 !important
+.name.checked
+  background: #e6f7ff !important
+.ant-form-explain, .ant-form-extra
+  min-height: 22px
+  color: #d42727 !important
+.ant-time-picker, .ant-calendar-picker
+  width: 98% !important
+.marker
+  border-radius: 50%
+  cursor: pointer
+  padding: 0
+  width: 60px
+  height: 60px
+  background-color: rgba(11,107,242,0.15)
+  border: 1px solid rgba(11,107,242,0.4)
+  display: flex
+  justify-content: center
+  align-items: center
+  div
+    height: 12px
+    width: 12px
+    background-color: #2E5BFF
+    border-radius: 50%
+
+.ant-menu-horizontal > .ant-menu-item:hover
+    color: white !important
+    border-bottom: 0 !important
+
+.ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover
+  background-color: #4581C2
+  color: white !important
+
+.ant-menu-submenu-title:hover
+  color: #4581C2
+
+.ant-menu-item:active, .ant-menu-submenu-title:active
+  background: #4581C2
+  color: white
+
+.ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal
+  border-bottom: 0 !important
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected
+  background-color: #4581C2 !important
+  color: white !important
+.ant-menu-inline .ant-menu-item::after
+  border: 0
+
+.ant-menu-horizontal > .ant-menu-item-selected
+  color: white
+li
+  &:focus
+    outline: 0

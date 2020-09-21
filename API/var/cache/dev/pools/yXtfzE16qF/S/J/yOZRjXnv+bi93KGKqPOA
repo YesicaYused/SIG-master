@@ -1,0 +1,87 @@
+<?php //%255BApp%255CEntity%255CLegalCase%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Table'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Table')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Index'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Index')),
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'legal_case',
+                'FK_case_profession',
+                'FK_case_site_class',
+                'FK_case_nationality',
+                'FK_case_vehicle',
+                'FK_case_municipality',
+                'FK_case_neighborhood',
+                'FK_case_variable',
+                'FK_case_weapon_type',
+                'FK_case_scholarship',
+                'FK_case_vehicle_2',
+            ],
+            'indexes' => [
+                [
+                    $o[1],
+                    $o[2],
+                    $o[3],
+                    $o[4],
+                    $o[5],
+                    $o[6],
+                    $o[7],
+                    $o[8],
+                    $o[9],
+                    $o[10],
+                ],
+            ],
+            'columns' => [
+                1 => [
+                    'profession_id',
+                ],
+                [
+                    'site_class_id',
+                ],
+                [
+                    'nationality_id',
+                ],
+                [
+                    'vehicle_aggressor_id',
+                ],
+                [
+                    'municipality_id',
+                ],
+                [
+                    'neighborhood_id',
+                ],
+                [
+                    'variable_id',
+                ],
+                [
+                    'weapon_type_id',
+                ],
+                [
+                    'scholarship_id',
+                ],
+                [
+                    'vehicle_victim_id',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[11],
+    ],
+    []
+); }];

@@ -1,0 +1,190 @@
+<form nz-form #Category="ngForm" class="form" *ngIf="this.caseService.caseState">
+  <nz-tabset>
+    <nz-tab nzTitle="Datos de la victima">
+      <nz-form-item nz-row nzType="flex" nzJustify="center" nzAlign="middle">
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Nombre </span>
+          <input type="text" nz-input [(ngModel)]="caseService.cases.victim" #victim="ngModel" name="victim" placeholder="Nombre de la Victima" required/>
+          <nz-form-explain><span *ngIf="(victim.invalid && victim.touched) && victim.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Profesión </span>
+          <nz-select nzPlaceHolder="Seleccione la profesión" [(ngModel)]="selectedValueProfession" #nameProfession="ngModel" name="nameProfession">
+            <nz-option nzLabel="{{item.name}}" nzValue="{{item.name}}" *ngFor="let item of professionService.professions"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameProfession.invalid && nameProfession.touched) && nameProfession.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Escolaridad </span>
+          <nz-select nzPlaceHolder="Seleccione la escolaridad" [(ngModel)]="selectedValueScholarship" #nameScholarship="ngModel" name="nameScholarship">
+            <nz-option nzLabel="{{item.name}}" nzValue="{{item.name}}" *ngFor="let item of scholarshipService.scholarships"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameScholarship.invalid && nameScholarship.touched) && nameScholarship.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Nacionalidad </span>
+          <nz-select nzPlaceHolder="Seleccione la nacionalidad" [(ngModel)]="selectedValueNationality" #nameNationality="ngModel" name="nameNationality">
+            <nz-option nzLabel="{{item.name}}" nzValue="{{item.name}}" *ngFor="let item of nationalityService.nationalities"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameNationality.invalid && nameNationality.touched) && nameNationality.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Vehiculo </span>
+          <nz-select nzPlaceHolder="Vehiculo de la victima" [(ngModel)]="selectedValueVehicleVictim" #nameVehicleVictim="ngModel" name="nameVehicleVictim">
+            <nz-option nzLabel="{{item.name}}" nzValue="{{item.name}}" *ngFor="let item of vehicleService.vehicles"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameVehicleVictim.invalid && nameVehicleVictim.touched) && nameVehicleVictim.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Estado civil </span>
+          <nz-select nzPlaceHolder="Seleccione el estado civil" [(ngModel)]="caseService.cases.civilStatus" #nameCivilStatus="ngModel" name="nameCivilStatus">
+            <nz-option nzLabel="Soltero" nzValue="Soltero"></nz-option>
+            <nz-option nzLabel="Casado" nzValue="Casado"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameCivilStatus.invalid && nameCivilStatus.touched) && nameCivilStatus.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Genero </span>
+          <nz-select nzPlaceHolder="Seleccione el género" [(ngModel)]="caseService.cases.gender" #nameGender="ngModel" name="nameGender">
+            <nz-option nzLabel="Masculino" nzValue="Masculino"></nz-option>
+            <nz-option nzLabel="Femenino" nzValue="Femenino"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameGender.invalid && nameGender.touched) && nameGender.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Edad </span>
+          <input type="number" nz-input [(ngModel)]="caseService.cases.age" #age="ngModel" name="age" placeholder="Edad de la victima" required/>
+          <nz-form-explain><span *ngIf="(age.invalid && age.touched) && age.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+      </nz-form-item>
+    </nz-tab>
+
+    <nz-tab nzTitle="Datos del agresor">
+      <nz-form-item>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Nombre </span>
+          <input type="text" nz-input [(ngModel)]="caseService.cases.aggressor" #aggressor="ngModel" name="aggressor" placeholder="Nombre del agresor" required/>
+          <nz-form-explain><span *ngIf="(aggressor.invalid && aggressor.touched) && aggressor.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Tipo de arma </span>
+          <nz-select nzPlaceHolder="Seleccione el tipo de arma" [(ngModel)]="selectedValueWeaponType" #nameWeaponType="ngModel" name="nameWeaponType">
+            <nz-option nzLabel="{{item.name}}" nzValue="{{item.name}}" *ngFor="let item of weaponTypeService.weapon_types"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameWeaponType.invalid && nameWeaponType.touched) && nameWeaponType.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Vehiculo </span>
+          <nz-select nzPlaceHolder="Vehiculo del agresor" [(ngModel)]="selectedValueVehicleAggressor" #nameVehicleAggressor="ngModel" name="nameVehicleAggressor">
+            <nz-option nzLabel="{{item.name}}" nzValue="{{item.name}}" *ngFor="let item of vehicleService.vehicles"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameVehicleAggressor.invalid && nameVehicleAggressor.touched) && nameVehicleAggressor.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+      </nz-form-item>
+    </nz-tab>
+    <nz-tab nzTitle="Lugar">
+      <nz-form-item nz-row nzType="flex" nzJustify="center" nzAlign="middle">
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Dirección </span>
+          <input type="text" nz-input [(ngModel)]="caseService.cases.direction" #direction="ngModel" name="direction" placeholder="Dirección de la victima" required/>
+          <nz-form-explain><span *ngIf="(direction.invalid && direction.touched) && direction.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Clase de sitio </span>
+          <nz-select nzPlaceHolder="Seleccione la clase de sitio" [(ngModel)]="selectedValueSiteClass" #nameSiteClass="ngModel" name="nameSiteClass">
+            <nz-option nzLabel="{{item.name}}" nzValue="{{item.name}}" *ngFor="let item of siteClassService.sites_class"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameSiteClass.invalid && nameSiteClass.touched) && nameSiteClass.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+      </nz-form-item>
+      <nz-form-item nz-row nzType="flex" nzJustify="center" nzAlign="middle">
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Comportamiento espacial </span>
+          <nz-select nzPlaceHolder="Comportamiento espacial" [(ngModel)]="caseService.cases.spatialBehavior" #nameSpatialBehavior="ngModel" name="nameSpatialBehavior">
+            <nz-option nzLabel="Rural" nzValue="Rural"></nz-option>
+            <nz-option nzLabel="Urbana" nzValue="Urbana"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameSpatialBehavior.invalid && nameSpatialBehavior.touched) && nameSpatialBehavior.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Barrio </span>
+          <nz-select nzPlaceHolder="Seleccione el barrio" [(ngModel)]="selectedValueNeighborhood" #nameNeighborhood="ngModel" name="nameNeighborhood">
+            <nz-option nzLabel="{{item.name}}" nzValue="{{item.name}}" *ngFor="let item of neighborhoodService.neighborhoods"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameNeighborhood.invalid && nameNeighborhood.touched) && nameNeighborhood.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Longitud </span>
+          <input type="number" nz-input [(ngModel)]="caseService.cases.latitude" #latitude="ngModel" name="latitude" placeholder="Longitud" required/>
+          <nz-form-explain><span *ngIf="(latitude.invalid && latitude.touched) && latitude.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Latitud </span>
+          <input type="number" nz-input [(ngModel)]="caseService.cases.longitude" #longitude="ngModel" name="longitude" placeholder="Latitud" required/>
+          <nz-form-explain><span *ngIf="(longitude.invalid && longitude.touched) && longitude.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Municipio </span>
+          <nz-select nzPlaceHolder="Seleccione el municipio" [(ngModel)]="selectedValueMunicipality" #nameMunicipality="ngModel" name="nameMunicipality">
+            <nz-option nzLabel="{{item.name}}" nzValue="{{item.name}}" *ngFor="let item of municipalityService.municipalities"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameMunicipality.invalid && nameMunicipality.touched) && nameMunicipality.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+      </nz-form-item>
+    </nz-tab>
+
+    <nz-tab nzTitle="Tiempo">
+      <nz-form-item nz-row>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Comportamiento temporal </span>
+          <nz-select nzPlaceHolder="Comportamiento temporal" [(ngModel)]="caseService.cases.temporaryBehavior" #nameTemporaryBehavior="ngModel" name="nameTemporaryBehavior">
+            <nz-option nzLabel="Madrugada" nzValue="Madrugada"></nz-option>
+            <nz-option nzLabel="Tarde" nzValue="Tarde"></nz-option>
+            <nz-option nzLabel="Noche" nzValue="Noche"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameTemporaryBehavior.invalid && nameTemporaryBehavior.touched) && nameTemporaryBehavior.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Fecha </span>
+          <nz-date-picker nzPlaceHolder="Seleccione la fecha" [(ngModel)]="caseService.cases.date" #date="ngModel" name="date" required></nz-date-picker>
+          <nz-form-explain><span *ngIf="(date.invalid && date.touched) && date.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Hora <span *ngIf="this.caseService.cases.time"> actual: {{this.caseService.cases.time | date:'mediumTime'}}</span></span>
+          <div *ngIf="!this.caseService.cases.time">
+            <nz-time-picker nzPlaceHolder="Seleccione la hora" [(ngModel)]="newTime" #time="ngModel" name="time" required></nz-time-picker>
+            <nz-form-explain><span *ngIf="(time.invalid && time.touched) && time.errors.required">Este campo es requerido</span></nz-form-explain>
+          </div>
+          <div *ngIf="this.caseService.cases.time">
+            <nz-time-picker  nzPlaceHolder="Seleccione la hora" [(ngModel)]="newTime" #time="ngModel" name="time"></nz-time-picker>
+          </div>
+        </div>
+      </nz-form-item>
+    </nz-tab>
+
+    <nz-tab nzTitle="Caso">
+      <nz-form-item nz-row nzType="flex" nzJustify="center" nzAlign="middle">
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Variable </span>
+          <nz-select nzPlaceHolder="Seleccione la variable" [(ngModel)]="selectedValueVariable" #nameVariable="ngModel" name="nameVariable">
+            <nz-option nzLabel="{{item.name}}" nzValue="{{item.name}}" *ngFor="let item of variableService.variables"></nz-option>
+          </nz-select>
+          <nz-form-explain><span *ngIf="(nameVariable.invalid && nameVariable.touched) && nameVariable.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+        <div nz-col nzXs="24" nzLg="12">
+          <span class="label">Fuente </span>
+          <input type="text" nz-input [(ngModel)]="caseService.cases.font" #font="ngModel" name="font" placeholder="Nombre de la fuente" required/>
+          <nz-form-explain><span *ngIf="(font.invalid && font.touched) && font.errors.required">Este campo es requerido</span></nz-form-explain>
+        </div>
+      </nz-form-item>
+    </nz-tab>
+  </nz-tabset>
+  <nz-form-item nz-row nzType="flex" nzJustify="end" nzAlign="middle">
+    <button nz-button nzType="default" (click)="handleCancel()">Cancelar</button>
+    <button *ngIf="this.caseService.cases == ''" nz-button nzType="default" [nzLoading]="isConfirmLoading" (click)="add()" [disabled]="!Category.form.valid">Enviar</button>
+    <button *ngIf="this.caseService.cases != ''" nz-button nzType="default" [nzLoading]="isConfirmLoading" (click)="change()" [disabled]="!Category.form.valid">Enviar</button>
+  </nz-form-item>
+</form>
+<div *ngIf="!this.caseService.caseState">
+  Cargando datos
+</div>

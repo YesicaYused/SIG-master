@@ -1,0 +1,63 @@
+<button nz-button nzType="default" (click)="add()" [hidden]="loading"><i nz-icon nzType="plus" nzTheme="outline"></i> Agregar</button>
+<nz-table
+  #ajaxTable
+  nzShowSizeChanger
+  [nzFrontPagination]="true"
+  [nzData]="this.caseService.listOfDisplayData"
+  [nzLoading]="loading"
+  [nzTotal]="total"
+  [(nzPageIndex)]="pageIndex"
+  [(nzPageSize)]="pageSize"
+  (nzPageIndexChange)="searchData()"
+  (nzPageSizeChange)="searchData(true)">
+  <thead (nzSortChange)="sort($event)" nzSingleSort>
+  <tr>
+    <th nzCustomFilter nzSortKey="victim">
+      Victima
+      <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" [nzClickHide]="false" nzTableFilter #dropdown>
+        <i
+          nz-icon
+          nzType="search"
+          class="ant-table-filter-icon"
+          [class.ant-table-filter-open]="dropdown.nzVisible"
+          nz-dropdown
+        ></i>
+        <div class="search-box">
+          <input type="text" nz-input placeholder="Nombre" [(ngModel)]="searchValue" />
+          <button nz-button nzSize="small" nzType="default" (click)="search()" class="search-button">
+            Buscar
+          </button>
+          <button nz-button nzSize="small" (click)="reset()">Restaurar</button>
+        </div>
+      </nz-dropdown>
+    </th>
+    <th nzSortKey="action"><span>Edad</span></th>
+    <th nzSortKey="action"><span>Municipio</span></th>
+    <th nzSortKey="action"><span>Género</span></th>
+    <th nzSortKey="action"><span>Agresor</span></th>
+    <th nzSortKey="action"><span>Fecha</span></th>
+    <th nzSortKey="action"><span>Hora</span></th>
+    <th nzSortKey="action"><span>Acción</span></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of ajaxTable.data">
+    <td>{{ data.victim }}</td>
+    <td>{{ data.age }}</td>
+    <td>{{ data.municipality.name }}</td>
+    <td>{{ data.gender }}</td>
+    <td>{{ data.aggressor }}</td>
+    <td>{{ data.date | date:'fullDate'}}</td>
+    <td>{{ data.time| date:'mediumTime'}}</td>
+    <td>
+      <i nz-icon nzType="edit" nzTheme="outline" nz-tooltip nzTitle="Editar" (click)="edit(data.id)"></i>
+      <ng-container *ngIf="data.state == 1; else elseTemplate">
+        <nz-switch (click)="updateON(data.id)" nzSize="small" [ngModel]="true" nz-tooltip nzTitle="Deshabilitar"></nz-switch>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <nz-switch (click)="updateOFF(data.id)" nzSize="small" [ngModel]="false" nz-tooltip nzTitle="Habilitar"></nz-switch>
+      </ng-template>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

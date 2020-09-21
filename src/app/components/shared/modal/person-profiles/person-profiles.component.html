@@ -1,0 +1,44 @@
+<section *ngIf="this.person_profileService.person_profileState">
+  <nz-table #rowSelectionTable
+            nzShowPagination
+            nzShowSizeChanger
+            [nzLoading]="loading"
+            [nzData]="personService.listOfDisplayData">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Código</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of rowSelectionTable.data" (click)="profiles(data.id, $event)" class="name" style="cursor: pointer;">
+      <td>{{ data.name }}</td>
+      <td>{{ data.lastName }}</td>
+      <td>{{ data.code }}</td>
+    </tr>
+    </tbody>
+  </nz-table>
+  <nz-table #rowSelectionTableProfile
+            nzShowPagination
+            nzShowSizeChanger
+            (nzCurrentPageDataChange)="currentPageDataChange($event)"
+            [nzLoading]="loadingProfile"
+            [nzData]="listOfAllDataProfile">
+    <thead>
+    <tr>
+      <th nzShowCheckbox></th>
+      <th>Nombre</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of rowSelectionTableProfile.data">
+      <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" (change)="add(data.id)"></td>
+      <td>{{data.name}}</td>
+    </tr>
+    </tbody>
+  </nz-table>
+</section>
+<div *ngIf="!this.person_profileService.person_profileState">
+  Cargando datos
+</div>

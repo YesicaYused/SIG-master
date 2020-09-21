@@ -1,0 +1,24 @@
+<nz-header *ngIf="SettingService.settingStatus">
+  <div class="content">
+    <div class="logo" [routerLink]="[ '/']" [ngStyle]="{'background-image': 'url('+this.url+SettingService.setting['1'].value+')'}"></div>
+    <ul nz-menu nzTheme="light" nzMode="horizontal" class="header-menu" style="background: #242E42 !important">
+      <li nz-menu-item nz-dropdown [nzDropdownMenu]="menu" *ngIf="authService.state">{{ authService.people.name }} {{ authService.people.last_name }}</li>
+      <li nz-menu-item routerLink="/ingresar" *ngIf="!authService.state">Iniciar sesión</li>
+    </ul>
+  </div>
+</nz-header>
+<div class="line"></div>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu nzSelectable>
+    <li nz-menu-group nzTitle="Perfiles" style="color: white;">
+      <ul *ngIf="authService.profile">
+        <li nz-menu-item *ngFor="let profile of authService.profile" (click)="panel(profile.name, authService.people.code)" routerLink="/panel">{{ profile.name }}</li>
+      </ul>
+    </li>
+    <li nz-menu-group nzTitle="Salir">
+      <ul>
+        <li nz-menu-item (click)="logout()">Cerrar sesión</li>
+      </ul>
+    </li>
+  </ul>
+</nz-dropdown-menu>

@@ -1,0 +1,235 @@
+<nz-tabset>
+  <nz-tab nzTitle="Logo & Favicon">
+    <div class="total">
+      <div class="logo">
+        <h4>Logo</h4>
+        <nz-upload
+          class="avatar-uploader"
+          nzAction="https://jsonplaceholder.typicode.com/posts/"
+          nzName="avatar"
+          nzListType="picture-card"
+          [nzPreview]="handlePreview"
+          [nzShowUploadList]="false"
+          [nzBeforeUpload]="beforeUpload"
+          (nzChange)="handleChangeLogo($event)">
+          <ng-container *ngIf="!SettingService.setting">
+            <i class="upload-icon" nz-icon [nzType]="loadingLogo ? 'loading' : 'plus'"></i>
+            <div class="ant-upload-text">Upload</div>
+          </ng-container>
+          <img *ngIf="SettingService.setting" [src]="url + SettingService.setting[1]['value']" class="avatar" />
+        </nz-upload>
+        <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisible=false">
+          <ng-template #modalContent>
+            <img [src]="previewImage" [ngStyle]="{ 'width': '100%' }" />
+          </ng-template>
+        </nz-modal>
+      </div>
+      <div class="favicon">
+        <h4>Favicon</h4>
+        <nz-upload
+          class="avatar-uploader"
+          nzAction="https://jsonplaceholder.typicode.com/posts/"
+          nzName="avatar"
+          nzListType="picture-card"
+          [nzShowUploadList]="false"
+          [nzBeforeUpload]="beforeUpload"
+          (nzChange)="handleChangeFavicon($event)">
+          <ng-container *ngIf="!SettingService.setting">
+            <i class="upload-icon" nz-icon [nzType]="loadingFavicon ? 'loading' : 'plus'"></i>
+            <div class="ant-upload-text">Upload</div>
+          </ng-container>
+          <img *ngIf="SettingService.setting" [src]="url + SettingService.setting[2]['value']" class="avatar" />
+        </nz-upload>
+      </div>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="Banner">
+    <div class="total">
+      <div class="image">
+        <nz-upload
+          class="avatar-uploader"
+          nzAction="https://jsonplaceholder.typicode.com/posts/"
+          nzName="avatar"
+          nzListType="picture-card"
+          [nzShowUploadList]="false"
+          [nzBeforeUpload]="beforeUpload"
+          (nzChange)="handleChangeBanner($event)">
+          <ng-container *ngIf="!SettingService.setting">
+            <i class="upload-icon" nz-icon [nzType]="loadingBanner ? 'loading' : 'plus'"></i>
+            <div class="ant-upload-text">Upload</div>
+          </ng-container>
+          <img *ngIf="SettingService.setting" [src]="url + SettingService.setting[7]['value']" class="avatar" />
+        </nz-upload>
+      </div>
+      <div class="description" *ngIf="SettingService.setting">
+        <input nz-input placeholder="Titulo" [(ngModel)]="SettingService.setting[20]['value']" />
+        <textarea rows="3" cols="100" nz-input [(ngModel)]="SettingService.setting[21]['value']" placeholder="Primer parrafo"></textarea>
+        <textarea rows="3" cols="100" nz-input [(ngModel)]="SettingService.setting[40]['value']" placeholder="Segundo parrafo"></textarea>
+        <br>
+      </div>
+    </div>
+    <div class="total">
+      <div class="image">
+        <nz-upload
+          class="avatar-uploader"
+          nzAction="https://jsonplaceholder.typicode.com/posts/"
+          nzName="avatar"
+          nzListType="picture-card"
+          [nzShowUploadList]="false"
+          [nzBeforeUpload]="beforeUpload"
+          (nzChange)="handleChangeBanner2($event)">
+          <ng-container *ngIf="!SettingService.setting">
+            <i class="upload-icon" nz-icon [nzType]="loadingBanner2 ? 'loading' : 'plus'"></i>
+            <div class="ant-upload-text">Upload</div>
+          </ng-container>
+          <img *ngIf="SettingService.setting" [src]="url + SettingService.setting[29]['value']" class="avatar" />
+        </nz-upload>
+      </div>
+      <div class="description" *ngIf="SettingService.setting">
+        <input nz-input placeholder="Titulo" [(ngModel)]="SettingService.setting[28]['value']" />
+        <textarea rows="3" cols="100" nz-input [(ngModel)]="SettingService.setting[27]['value']" placeholder="Primer parrafo"></textarea>
+      </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="end" nzAlign="end" class="button">
+      <button nz-button class="login-avatar-button" [nzType]="'default'" (click)="modifyBanners()" [nzLoading]="isLoadingOne">Modificar Texto</button>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="Servicios">
+    <button nz-button nzType="default" style="margin-bottom: 20px;" (click)="addService()">
+      <i nz-icon nzType="plus" nzTheme="outline"></i>Nuevo
+    </button>
+    <button nz-button nzType="default" style="margin-bottom: 20px; margin-left: 20px;" (click)="deleteServices()">
+      <i nz-icon nzType="delete" nzTheme="outline"></i>Eliminar
+    </button>
+    <br>
+    <div class="total" *ngFor="let item of SettingService.service; let i=index">
+      <nz-radio-group [(ngModel)]="radioValue" *ngIf="stateDelete == true">
+        <label nz-radio nzValue="{{ item.id }}" nz-popconfirm nzTitle="¿Estás seguro de eliminar este servicio?" nzOkText="Confirmar" nzCancelText="Cancelar" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()" nzOkType="default"></label>
+      </nz-radio-group>
+      <div class="image">
+        <nz-upload
+          class="avatar-uploader"
+          nzAction="https://jsonplaceholder.typicode.com/posts/"
+          nzName="avatar"
+          nzListType="picture-card"
+          [nzDisabled]="isHidden"
+          [nzShowUploadList]="false"
+          [nzBeforeUpload]="beforeUpload"
+          (nzChange)="handleChangeService($event, item.id)">
+          <ng-container *ngIf="!item.image">
+            <i class="upload-icon" nz-icon [nzType]="loadingService ? 'loading' : 'plus'"></i>
+            <div class="ant-upload-text">Upload</div>
+          </ng-container>
+          <img *ngIf="item.image" [src]="url + item.image" class="avatar" />
+        </nz-upload>
+      </div>
+      <div class="description">
+        <input nz-input placeholder="Titulo" [(ngModel)]="item.title" [disabled]="isHidden"/>
+        <textarea rows="3" cols="100" nz-input [(ngModel)]="item.description" [disabled]="isHidden"></textarea>
+      </div>
+      <br>
+    </div>
+    <div nz-row nzType="flex" nzJustify="end" nzAlign="end" class="button">
+      <button nz-button class="login-avatar-button" [nzType]="'default'" (click)="modifyServices()" [nzLoading]="isLoadingOne" [hidden]="isHidden">Modificar Texto</button>
+      <button nz-button class="login-avatar-button" [nzType]="'default'" (click)="deleteService()" [hidden]="!isHidden">Finalizar</button>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="Header">
+    <button nz-button nzType="default" style="margin-bottom: 20px;" (click)="cleanHeader()">
+      <i nz-icon nzType="plus" nzTheme="outline"></i>Nuevo
+    </button>
+    <h6>Menu 1</h6>
+    <nz-tag *ngFor="let item of SettingService.menu_header_one">
+      <span class="header_modify" (click)="editOne(item.id,$event)"> {{ item.name }} </span> <i nz-icon type="close" theme="outline" (click)="onClose(item.id, '1')"></i>
+    </nz-tag>
+    <h6  style="margin-top: 10px;">Menu 2 (Sin submenu)</h6>
+    <nz-tag *ngFor="let item of SettingService.menu_header_two">
+      <span class="header_modify" (click)="editTwo(item.id,$event)"> {{ item.name }} </span> <i nz-icon type="close" theme="outline" (click)="onClose(item.id, '2')"></i>
+    </nz-tag>
+    <br>
+    <form nz-form #Menu="ngForm" class="form" *ngIf="state == true">
+      <nz-radio-group [(ngModel)]="typeMenu" #type_menu="ngModel" name="type_menu">
+        <br>
+        <h6>Elige el menu</h6>
+        <label nz-radio nzValue="Menu 1" (click)="menu(1)">Menu 1</label>
+        <label nz-radio nzValue="Menu 2" (click)="menu(2)">Menu 2</label>
+      </nz-radio-group>
+      <nz-radio-group #auth_menu="ngModel" name="auth_menu" [(ngModel)]="SettingService.menu_headers_one.authentication" *ngIf="typeMenu == 'Menu 2'">
+        <br>
+        <h6>¿Necesita iniciar sesión?</h6>
+        <label nz-radio nzValue="NO">NO</label>
+        <label nz-radio nzValue="SI">SI</label>
+      </nz-radio-group>
+      <nz-input-group nzCompact style="margin-top: 20px;" class="ant-advanced-search-form">
+        <h6>Tipo de iconos</h6><br>
+        <div nz-row [nzGutter]="24">
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-radio-group>
+              <label *ngFor="let item of iconService.icons_type" nz-radio nzValue="{{item.name}}" (click)="icon_theme(item.id)">{{item.name}}</label>
+            </nz-radio-group>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-form-item nzFlex>
+              <nz-form-label>Icono </nz-form-label>
+              <nz-input-group>
+                <input type="text" nz-input [(ngModel)]="SettingService.menu_headers_one.icon" #icon="ngModel" name="icon" placeholder="Icono" [disabled]="true" required/>
+              </nz-input-group>
+            </nz-form-item>
+            <nz-form-explain *ngIf="(icon.invalid && icon.touched) && icon.errors.required">El icono es requerido</nz-form-explain>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-form-item nzFlex>
+              <nz-form-label>Nombre </nz-form-label>
+              <nz-input-group>
+                <input type="text" placeholder="Nombre" nz-input #name="ngModel" name="name" [(ngModel)]="SettingService.menu_headers_one.name" required/>
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12" style="margin-top: 10px;">
+            <nz-form-item nzFlex>
+              <nz-form-label>Ruta </nz-form-label>
+              <nz-input-group>
+                <input type="text" placeholder="Ruta" #route="ngModel" name="route" nz-input [(ngModel)]="SettingService.menu_headers_one.route" required/>
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+        </div>
+      </nz-input-group> <br>
+      <button [nzLoading]="isLoadingOne" (click)="header()" nz-button class="login-avatar-button" [nzType]="'default'" [disabled]="!Menu.form.valid">Guardar</button>
+    </form>
+  </nz-tab>
+  <nz-tab nzTitle="Footer">
+    <button nz-button nzType="default" style="margin-bottom: 20px;" (click)="cleanFooter()">
+      <i nz-icon nzType="plus" nzTheme="outline"></i>Nuevo
+    </button>
+    <h6>Copyright</h6>
+    <input *ngIf="SettingService.setting" nz-input placeholder="Copyright" [(ngModel)]="SettingService.setting[15]['value']" />
+    <input *ngIf="!SettingService.setting" nz-input placeholder="Copyright" />
+    <br>
+    <h6>Menu</h6>
+    <nz-tag *ngFor="let item of SettingService.menu_footer">
+      <span class="footer" (click)="editFooter(item.id,$event)"> {{ item.name }} </span> <i nz-icon type="close" theme="outline" (click)="onCloseFooter(item.id)"></i>
+    </nz-tag>
+    <br>
+        <div nz-row [nzGutter]="24" style="margin-top: 20px;" *ngIf="stateFooter == true">
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-form-item nzFlex>
+              <nz-form-label>Nombre </nz-form-label>
+              <nz-input-group>
+                <input required type="text" nz-input placeholder="Nombre" [(ngModel)]="SettingService.menus_footer.name" #name=ngModel name="name"/>
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+            <nz-form-item nzFlex>
+              <nz-form-label>Ruta </nz-form-label>
+              <nz-input-group>
+                <input required type="text" nz-input placeholder="Ruta" [(ngModel)]="SettingService.menus_footer.route" #route=ngModel name="route"/>
+              </nz-input-group>
+            </nz-form-item>
+          </div>
+        </div>
+      <br>
+      <button [nzLoading]="isLoadingOne" (click)="footer()" nz-button class="login-avatar-button" [nzType]="'default'">Guardar</button>
+  </nz-tab>
+</nz-tabset>
